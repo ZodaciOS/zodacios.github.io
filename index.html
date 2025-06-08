@@ -3,87 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Propxertiy</title>
-  
-  <!-- Google Fonts: Inter & Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet" />
-  
-  <!-- External CSS -->
-  <link rel="stylesheet" href="styles.css" />
+  <title>Propxerity</title>
+
+  <!-- Fonts and CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Proxpertiy</h1>
-    <p>ZodaciOS's repo</p>
-  </header>
-  
-  <nav class="navbar">
-    <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
-    <div class="nav-links">
-      <a href="#home" class="nav-link">Home</a>
-      <a href="#packages" class="nav-link">Packages</a>
+  <nav id="navbar">
+    <div class="nav-left">
+      <button id="menu-toggle">☰</button>
+    </div>
+    <div class="nav-right">
+      <a href="#home">Home</a>
+      <a href="#packages">Packages</a>
     </div>
   </nav>
 
+  <header id="home">
+    <h1>Propxerity</h1>
+    <p>Supports Sileo, Zebra, and Cydia | iOS 11 - 15</p>
+  </header>
+
   <main>
-    <section id="home">
+    <section>
       <h2>About This Repo</h2>
-      <p>Propxertiy is the ultimate repo for direct customization on jailbroken devices. All packages are created by ZodaciOS, me.</p>
+      <p>Propxerity is the ultimate repo for direct customization on jailbroken devices. All packages are created by ZodaciOS, me.</p>
       <p>Download my repo below or add it manually.</p>
     </section>
-    
-    <section id="packages">
+
+    <section>
       <h2>How to Add This Repo</h2>
-      <p>You can add this repo manually or tap one of the buttons below (on your jailbroken device) to add automatically:</p>
-      
+      <p>Add this repo manually or tap one of the buttons below (on your jailbroken device) to add automatically:</p>
       <ul>
-        <li><strong>Manual:</strong> Enter <code>https://yourgithubusername.github.io/</code> in your package manager's source add section.</li>
+        <li><strong>Manual:</strong> Enter <code>https://yourgithubusername.github.io/</code> in your package manager.</li>
       </ul>
-      
       <div class="buttons">
-        <a href="cydia://url/https://yourgithubusername.github.io/" class="btn cydia" target="_blank" rel="noopener noreferrer">Add to Cydia</a>
-        <a href="sileo://source/https://yourgithubusername.github.io/" class="btn sileo" target="_blank" rel="noopener noreferrer">Add to Sileo</a>
-        <a href="zebra://sources/add/https://yourgithubusername.github.io/" class="btn zebra" target="_blank" rel="noopener noreferrer">Add to Zebra</a>
+        <a href="cydia://url/https://yourgithubusername.github.io/" class="btn cydia">Add to Cydia</a>
+        <a href="sileo://source/https://yourgithubusername.github.io/" class="btn sileo">Add to Sileo</a>
+        <a href="zebra://sources/add/https://yourgithubusername.github.io/" class="btn zebra">Add to Zebra</a>
       </div>
     </section>
-    
-    <section>
+
+    <section id="packages">
       <h2>Featured Packages</h2>
       <ul>
-        <li><a href="packages/tweak1.deb" target="_blank" rel="noopener">AwesomeTweak</a> — Enhances your iOS experience with new gestures and animations.</li>
-        <li><a href="packages/tweak2.deb" target="_blank" rel="noopener">QuickSwitcher</a> — A faster way to switch between apps.</li>
-        <li><a href="packages/tweak3.deb" target="_blank" rel="noopener">DarkModePlus</a> — Adds dark mode support to legacy apps.</li>
+        <li><a href="packages/tweak1.deb">AwesomeTweak</a> — New gestures and animations.</li>
+        <li><a href="packages/tweak2.deb">QuickSwitcher</a> — A faster app switcher.</li>
+        <li><a href="packages/tweak3.deb">DarkModePlus</a> — Dark mode for legacy apps.</li>
       </ul>
     </section>
   </main>
-  
+
   <footer>
-    © 2025 Your Name • Hosted on GitHub Pages
+    © 2025 ZodaciOS • Hosted on GitHub Pages
   </footer>
 
   <script>
-    // Navbar toggle for small screens
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    // Hide navbar on scroll down, show on scroll up
+    // Scroll nav hide/show
     let lastScrollTop = 0;
-    const navbar = document.querySelector('.navbar');
-
-    window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    window.addEventListener("scroll", function () {
       let st = window.pageYOffset || document.documentElement.scrollTop;
-      if (st > lastScrollTop){
-        // Scroll down - hide navbar
-        navbar.style.top = '-60px';
+      if (st > lastScrollTop) {
+        navbar.style.top = "-60px"; // Hide
       } else {
-        // Scroll up - show navbar
-        navbar.style.top = '0';
+        navbar.style.top = "0"; // Show
       }
-      lastScrollTop = st <= 0 ? 0 : st; 
+      lastScrollTop = st <= 0 ? 0 : st;
     }, false);
   </script>
 </body>
