@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Propxerity</title>
-
+  
   <!-- Google Fonts: Inter & Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet" />
-
+  
   <style>
     /* Reset */
     * {
       margin: 0; padding: 0; box-sizing: border-box;
     }
-
+    
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f5f7fa;
@@ -25,44 +25,50 @@
       line-height: 1.5;
     }
 
-    /* Navigation styles */
+    /* Navigation Bar */
     nav {
-      position: sticky;
-      top: 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
       background: white;
-      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-      padding: 12px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       display: flex;
       justify-content: flex-end;
-      gap: 16px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
+      padding: 12px 30px;
       z-index: 1000;
       transition: top 0.3s ease;
     }
 
     nav a {
-      color: #2c5282;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #3182ce;
       text-decoration: none;
+      margin-left: 20px;
       font-size: 1rem;
-      padding: 8px 12px;
-      border-radius: 8px;
       user-select: none;
-      cursor: pointer;
-      transition: background-color 0.25s ease;
     }
 
-    nav a:hover,
-    nav a.active {
-      background-color: #bee3f8;
-      color: #2c5282;
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hide nav on scroll down */
+    body.nav-up nav {
+      top: -60px; /* height of nav + padding */
+    }
+
+    /* Add top padding so content doesn't hide behind fixed nav */
+    main {
+      max-width: 800px;
+      margin: 80px auto 0;
+      flex-grow: 1;
     }
 
     header {
       text-align: center;
       margin-bottom: 40px;
     }
-
+    
     header h1 {
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
@@ -70,18 +76,12 @@
       color: #2d3748;
       margin-bottom: 8px;
     }
-
+    
     header p {
       font-size: 1.15rem;
       color: #4a5568;
     }
-
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-      flex-grow: 1;
-    }
-
+    
     section {
       background: white;
       border-radius: 12px;
@@ -90,11 +90,11 @@
       margin-bottom: 25px;
       transition: box-shadow 0.3s ease;
     }
-
+    
     section:hover {
       box-shadow: 0 6px 15px rgb(0 0 0 / 0.15);
     }
-
+    
     section h2 {
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
@@ -104,28 +104,28 @@
       border-bottom: 2px solid #bee3f8;
       padding-bottom: 6px;
     }
-
+    
     ul {
       list-style: inside disc;
       margin-left: 12px;
       color: #2d3748;
     }
-
+    
     ul li {
       margin-bottom: 10px;
       font-size: 1rem;
     }
-
+    
     a {
       color: #3182ce;
       text-decoration: none;
       font-weight: 600;
     }
-
+    
     a:hover {
       text-decoration: underline;
     }
-
+    
     code {
       background-color: #edf2f7;
       padding: 3px 7px;
@@ -141,7 +141,7 @@
       gap: 14px;
       flex-wrap: wrap;
     }
-
+    
     .btn {
       flex: 1 1 150px;
       padding: 12px 18px;
@@ -154,35 +154,35 @@
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
       user-select: none;
     }
-
+    
     .btn:hover {
       box-shadow: 0 5px 15px rgb(0 0 0 / 0.25);
     }
-
+    
     .cydia {
       background-color: #f0524e;
     }
-
+    
     .cydia:hover {
       background-color: #d94340;
     }
-
+    
     .sileo {
       background-color: #3c92fc;
     }
-
+    
     .sileo:hover {
       background-color: #2370e2;
     }
-
+    
     .zebra {
       background-color: #2d3748;
     }
-
+    
     .zebra:hover {
       background-color: #1a202c;
     }
-
+    
     footer {
       text-align: center;
       color: #718096;
@@ -191,10 +191,27 @@
       user-select: none;
     }
   </style>
+  
+  <script>
+    // Hide nav on scroll down, show on scroll up
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      const st = window.pageYOffset || document.documentElement.scrollTop;
+      if (st > lastScrollTop) {
+        // scrolling down
+        document.body.classList.add('nav-up');
+      } else {
+        // scrolling up
+        document.body.classList.remove('nav-up');
+      }
+      lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+    });
+  </script>
+  
 </head>
 <body>
   <nav>
-    <a href="index.html" class="active">Home</a>
+    <a href="index.html">Home</a>
     <a href="packages.html">Packages</a>
     <a href="contact.html">Contacts</a>
   </nav>
@@ -203,27 +220,41 @@
     <h1>Propxerity</h1>
     <p>Supports Sileo, Zebra, and Cydia | iOS 11 - 15</p>
   </header>
-
+  
   <main>
-    <!-- Your main content here -->
+    <section>
+      <h2>About This Repo</h2>
+      <p>Propxerity is the ultimate repo for direct customization on jailbroken devices. All packages are created by ZodaciOS, me.</p>
+      <p>Download my repo below or add it manually.</p>
+    </section>
+    
+    <section>
+      <h2>How to Add This Repo</h2>
+      <p>You can add this repo manually or tap one of the buttons below (on your jailbroken device) to add automatically:</p>
+      
+      <ul>
+        <li><strong>Manual:</strong> Enter <code>https://yourgithubusername.github.io/</code> in your package manager's source add section.</li>
+      </ul>
+      
+      <div class="buttons">
+        <a href="cydia://url/https://yourgithubusername.github.io/" class="btn cydia" target="_blank" rel="noopener noreferrer">Add to Cydia</a>
+        <a href="sileo://source/https://yourgithubusername.github.io/" class="btn sileo" target="_blank" rel="noopener noreferrer">Add to Sileo</a>
+        <a href="zebra://sources/add/https://yourgithubusername.github.io/" class="btn zebra" target="_blank" rel="noopener noreferrer">Add to Zebra</a>
+      </div>
+    </section>
+    
+    <section>
+      <h2>Featured Packages</h2>
+      <ul>
+        <li><a href="packages/tweak1.deb" target="_blank" rel="noopener">AwesomeTweak</a> — Enhances your iOS experience with new gestures and animations.</li>
+        <li><a href="packages/tweak2.deb" target="_blank" rel="noopener">QuickSwitcher</a> — A faster way to switch between apps.</li>
+        <li><a href="packages/tweak3.deb" target="_blank" rel="noopener">DarkModePlus</a> — Adds dark mode support to legacy apps.</li>
+      </ul>
+    </section>
   </main>
-
+  
   <footer>
     © 2025 Your Name • Hosted on GitHub Pages
   </footer>
-
-  <script>
-    // Optional: Add JS to highlight active link based on current URL
-    const navLinks = document.querySelectorAll('nav a');
-    const currentPath = window.location.pathname.split('/').pop();
-
-    navLinks.forEach(link => {
-      if(link.getAttribute('href') === currentPath) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    });
-  </script>
 </body>
 </html>
