@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Propxerity - Packages</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f7fa;
+      color: #1a202c;
+      padding: 0 20px 30px;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 0 10px;
+    }
+
+    header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 2.8rem;
+      color: #2d3748;
+    }
+
+    nav {
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 15px 0;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    nav a {
+      margin: 0 20px;
+      color: #3182ce;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .card {
+      flex: 0 0 100%;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 25px;
+      text-align: center;
+    }
+
+    .card h2 {
+      font-family: 'Poppins', sans-serif;
+      color: #2c5282;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #4a5568;
+      margin-bottom: 20px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #3182ce;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .download-btn:hover {
+      background-color: #2b6cb0;
+    }
+
+    .nav-arrows {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+
+    .nav-arrows button {
+      background-color: #edf2f7;
+      border: none;
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      color: #718096;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="contact.html">Contact</a>
+    <a href="packages.html">Packages</a>
+  </nav>
+
+  <header>
+    <h1>Propxerity Packages</h1>
+  </header>
+
+  <div class="carousel-container">
+    <div class="carousel" id="carousel">
+      <div class="card">
+        <h2>Debcrypter</h2>
+        <p>CLI tool to extract .deb files from APT.</p>
+        <a href="#" class="download-btn">Download</a>
+      </div>
+      <div class="card">
+        <h2>Acrypt</h2>
+        <p>Lock apps using real biometrics.</p>
+        <a href="#" class="download-btn">Download</a>
+      </div>
+      <div class="card">
+        <h2>Fryption</h2>
+        <p>Lock screen renovation with endless customization.</p>
+        <a href="#" class="download-btn">Download</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-arrows">
+    <button onclick="prev()">← Prev</button>
+    <button onclick="next()">Next →</button>
+  </div>
+
+  <footer>
+    © 2025 Your Name • Hosted on GitHub Pages
+  </footer>
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    const totalSlides = carousel.children.length;
+    let index = 0;
+
+    function showSlide(i) {
+      index = (i + totalSlides) % totalSlides;
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function next() {
+      showSlide(index + 1);
+    }
+
+    function prev() {
+      showSlide(index - 1);
+    }
+
+    // Auto-slide every 5 seconds
+    setInterval(() => {
+      next();
+    }, 5000);
+  </script>
+
+</body>
+</html>
