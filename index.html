@@ -21,28 +21,98 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding: 30px 20px;
+      padding: 80px 20px 30px; /* top padding for fixed header */
       line-height: 1.5;
+      scroll-behavior: smooth;
     }
-    
-    header {
-      text-align: center;
-      margin-bottom: 40px;
+
+    /* Fixed header */
+    header.header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background-color: #2d3748;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 10000;
+      transition: top 0.3s ease;
     }
-    
-    header h1 {
-      font-family: 'Poppins', sans-serif;
+
+    /* Hamburger button */
+    #hamburger {
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: #edf2f7;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Top nav container */
+    nav.top-nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Nav buttons */
+    nav.top-nav a.nav-btn {
+      color: #edf2f7;
+      text-decoration: none;
       font-weight: 600;
-      font-size: 2.8rem;
-      color: #2d3748;
-      margin-bottom: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+      user-select: none;
     }
-    
-    header p {
-      font-size: 1.15rem;
-      color: #4a5568;
+
+    nav.top-nav a.nav-btn:hover {
+      background-color: #3182ce;
+      color: white;
     }
-    
+
+    /* Side nav panel */
+    nav.side-nav {
+      position: fixed;
+      top: 60px; /* below header */
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #2d3748;
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+      transition: left 0.3s ease;
+      z-index: 9999;
+    }
+
+    /* Side nav links */
+    nav.side-nav a.side-link {
+      color: #edf2f7;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.2rem;
+      padding: 15px 25px;
+      border-bottom: 1px solid #4a5568;
+      user-select: none;
+    }
+
+    nav.side-nav a.side-link:hover {
+      background-color: #3182ce;
+      color: white;
+    }
+
+    /* Side nav visible */
+    nav.side-nav.open {
+      left: 0;
+    }
+
+    /* Your existing styles for the main content */
     main {
       max-width: 800px;
       margin: 0 auto;
@@ -160,19 +230,35 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Proxpertiy</h1>
-    <p>Supports Sileo, Zebra, and Cydia | iOS 11 - 15</p>
+
+  <header class="header">
+    <button id="hamburger" aria-label="Toggle menu">&#9776;</button>
+
+    <nav class="top-nav">
+      <a href="#home" class="nav-btn">Home</a>
+      <a href="#packages" class="nav-btn">Packages</a>
+    </nav>
   </header>
   
+  <nav class="side-nav" id="sideNav" aria-label="Side navigation menu">
+    <a href="#home" class="side-link">Home</a>
+    <a href="#packages" class="side-link">Packages</a>
+  </nav>
+  
   <main>
-    <section>
-      <h2>About This Repo</h2>
-      <p>Propxertiy is the ultimate repo for direct customization on jailbroken devices. All packages are created by ZodaciOS, me.<p>
-      <p>Download my repo below or add it manually.</p>
+    <section id="home">
+      <header>
+        <h1>Proxpertiy</h1>
+        <p>Supports Sileo, Zebra, and Cydia | iOS 11 - 15</p>
+      </header>
+      <section>
+        <h2>About This Repo</h2>
+        <p>Propxertiy is the ultimate repo for direct customization on jailbroken devices. All packages are created by ZodaciOS, me.</p>
+        <p>Download my repo below or add it manually.</p>
+      </section>
     </section>
     
-    <section>
+    <section id="packages">
       <h2>How to Add This Repo</h2>
       <p>You can add this repo manually or tap one of the buttons below (on your jailbroken device) to add automatically:</p>
       
@@ -185,20 +271,9 @@
         <a href="sileo://source/https://yourgithubusername.github.io/" class="btn sileo" target="_blank" rel="noopener noreferrer">Add to Sileo</a>
         <a href="zebra://sources/add/https://yourgithubusername.github.io/" class="btn zebra" target="_blank" rel="noopener noreferrer">Add to Zebra</a>
       </div>
-    </section>
-    
-    <section>
-      <h2>Featured Packages</h2>
+      
+      <h2 style="margin-top: 40px;">Featured Packages</h2>
       <ul>
         <li><a href="packages/tweak1.deb" target="_blank" rel="noopener">AwesomeTweak</a> — Enhances your iOS experience with new gestures and animations.</li>
         <li><a href="packages/tweak2.deb" target="_blank" rel="noopener">QuickSwitcher</a> — A faster way to switch between apps.</li>
-        <li><a href="packages/tweak3.deb" target="_blank" rel="noopener">DarkModePlus</a> — Adds dark mode support to legacy apps.</li>
-      </ul>
-    </section>
-  </main>
-  
-  <footer>
-    © 2025 Your Name • Hosted on GitHub Pages
-  </footer>
-</body>
-</html>
+        <li><a href="packages/tweak3.deb" target
