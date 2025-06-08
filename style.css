@@ -1,7 +1,7 @@
-/* Reset */
+ /* Reset & Base */
 * {
-  margin: 0; 
-  padding: 0; 
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -9,16 +9,48 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: #f5f7fa;
   color: #1a202c;
+  line-height: 1.6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 30px 20px;
-  line-height: 1.5;
 }
 
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2d3748;
+  padding: 15px 30px;
+  color: white;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  text-decoration: underline;
+  color: #63b3ed;
+}
+
+.menu-toggle {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none; /* for future sidebar use */
+}
+
+/* Header */
 header {
   text-align: center;
-  margin-bottom: 40px;
+  padding: 40px 20px 20px;
 }
 
 header h1 {
@@ -26,18 +58,20 @@ header h1 {
   font-weight: 600;
   font-size: 2.8rem;
   color: #2d3748;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 header p {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: #4a5568;
 }
 
+/* Main content */
 main {
+  flex: 1;
   max-width: 800px;
   margin: 0 auto;
-  flex-grow: 1;
+  padding: 20px;
 }
 
 section {
@@ -63,17 +97,7 @@ section h2 {
   padding-bottom: 6px;
 }
 
-ul {
-  list-style: inside disc;
-  margin-left: 12px;
-  color: #2d3748;
-}
-
-ul li {
-  margin-bottom: 10px;
-  font-size: 1rem;
-}
-
+/* Links */
 a {
   color: #3182ce;
   text-decoration: none;
@@ -84,67 +108,11 @@ a:hover {
   text-decoration: underline;
 }
 
-code {
-  background-color: #edf2f7;
-  padding: 3px 7px;
-  border-radius: 5px;
-  font-family: 'Fira Mono', monospace;
-  font-size: 0.95rem;
-}
-
-/* Buttons for URL schemes */
-.buttons {
-  margin-top: 12px;
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  flex: 1 1 150px;
-  padding: 12px 18px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  color: white;
-  box-shadow: 0 3px 7px rgb(0 0 0 / 0.15);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
-}
-
-.btn:hover {
-  box-shadow: 0 5px 15px rgb(0 0 0 / 0.25);
-}
-
-.cydia {
-  background-color: #f0524e;
-}
-
-.cydia:hover {
-  background-color: #d94340;
-}
-
-.sileo {
-  background-color: #3c92fc;
-}
-
-.sileo:hover {
-  background-color: #2370e2;
-}
-
-.zebra {
-  background-color: #2d3748;
-}
-
-.zebra:hover {
-  background-color: #1a202c;
-}
-
+/* Footer */
 footer {
   text-align: center;
   color: #718096;
   font-size: 0.9rem;
-  padding: 15px 0 5px;
+  padding: 20px 0;
   user-select: none;
 }
