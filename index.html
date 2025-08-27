@@ -1,43 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proxperity</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kyson's Maximalist Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+/* Body & Background */
+body {
+    font-family: 'Inter', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x:hidden;
+    position: relative;
+}
+
+/* Rain effect */
+body::before {
+    content: "";
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background-image: url('rain.jpeg');
+    background-size: 50px 50px;
+    background-repeat: repeat;
+    pointer-events: none;
+    z-index: 0;
+    animation: rain 20s linear infinite;
+    opacity: 0.3;
+}
+@keyframes rain {
+    0% { background-position:0 0; }
+    100% { background-position:0 1000px; }
+}
+
+/* Floating shapes */
+.shape {
+    position: fixed;
+    width: 30px; height: 30px;
+    background: linear-gradient(45deg, #ff2f92, #ff00d4);
+    border-radius: 50%;
+    opacity: 0.6;
+    z-index:0;
+    pointer-events:none;
+    animation: floatAnim linear infinite;
+}
+@keyframes floatAnim {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-50px) rotate(180deg); }
+    100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* Smooth scrolling */
+html { scroll-behavior:smooth; }
+
+/* Navbar */
+nav {
+    position: fixed;
+    top:0;
+    width:100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding:1rem 3rem;
+    z-index: 10;
+}
+nav .logo {
+    font-size:1.8rem;
+    font-weight:700;
+    background: linear-gradient(90deg,#ff2f92,#ff00d4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 0 10px #ff2f92;
+}
+nav ul { display:flex; list-style:none; gap:2rem; }
+nav ul li a {
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    position:relative;
+    transition:0.3s;
+}
+nav ul li a::after {
+    content:'';
+    position:absolute;
+    width:0%;
+    height:2px;
+    bottom:-3px;
+    left:0;
+    background:#ff2f92;
+    transition:0.3s;
+}
+nav ul li a:hover::after { width:100%; }
+
+/* Hero Section */
+.hero {
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 2rem;
+    position:relative;
+    z-index:1;
+}
+.hero h1 {
+    font-size:4rem;
+    font-weight:700;
+    background: linear-gradient(90deg,#ff2f92,#ff00d4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation: gradientText 5s infinite alternate;
+    text-shadow: 0 0 15px #ff2f92, 0 0 25px #ff00d4;
+}
+.hero p {
+    margin-top:1rem;
+    font-size:1.5rem;
+    max-width:600px;
+    line-height:1.5;
+    color:#ddd;
+    opacity:0;
+    transform:translateY(20px);
+    animation: fadeUp 1s forwards 0.5s;
+}
+
+/* Gradient Animation */
+@keyframes gradientText {
+    0% { background-position:0% 50%; }
+    50% { background-position:100% 50%; }
+    100% { background-position:0% 50%; }
+}
+@keyframes fadeUp {
+    to { opacity:1; transform:translateY(0); }
+}
+
+/* Sections */
+section {
+    padding:6rem 3rem;
+    min-height:100vh;
+    position:relative;
+    z-index:1;
+}
+.section-title {
+    font-size:2.5rem;
+    font-weight:700;
+    text-align:center;
+    margin-bottom:3rem;
+    background: linear-gradient(90deg,#ff2f92,#ff00d4);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow: 0 0 10px #ff2f92,0 0 20px #ff00d4;
+}
+
+/* Projects Grid */
+.projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; }
+.project-card {
+    background: rgba(255,0,146,0.1);
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg,#ff2f92,#ff00d4) 1;
+    border-radius: 15px;
+    padding:2rem;
+    backdrop-filter: blur(10px);
+    transition: transform 0.5s, box-shadow 0.5s, border 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+.project-card::before {
+    content:'';
+    position:absolute;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: radial-gradient(circle,#ff2f92,transparent 70%);
+    opacity:0;
+    transition: opacity 0.5s;
+}
+.project-card:hover::before { opacity:0.2; }
+.project-card:hover { transform: translateY(-10px) rotate(-1deg); box-shadow:0 15px 40px rgba(255,47,146,0.7); }
+.project-card h3 { font-size:1.6rem; margin-bottom:1rem; color:#fff; }
+.project-card p { color:#ccc; }
+
+/* Contact Section */
+.contact { display:flex; flex-direction:column; align-items:center; gap:2rem; }
+.contact-icons { display:flex; gap:2rem; }
+.contact-icons a img {
+    width:50px;
+    filter: drop-shadow(0 0 5px #ff2f92);
+    transition: transform 0.3s, filter 0.3s;
+}
+.contact-icons a img:hover {
+    transform: scale(1.3) rotate(15deg);
+    filter: drop-shadow(0 0 20px #ff2f92);
+}
+
+/* Skills Section */
+.skills {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:1rem;
+}
+.skill { 
+    background: linear-gradient(90deg,#ff2f92,#ff00d4); 
+    padding:0.8rem 1.5rem; 
+    border-radius:20px; 
+    font-weight:600; 
+    text-shadow:0 0 5px #ff2f92; 
+    transition: transform 0.3s;
+}
+.skill:hover { transform: scale(1.2); }
+
+/* Footer */
+footer { text-align:center; padding:2rem; background: rgba(0,0,0,0.7); }
+
+/* Scroll Reveal Animations */
+.reveal { opacity:0; transform:translateY(50px); transition: all 0.8s ease-out; }
+.reveal.active { opacity:1; transform:translateY(0); }
+
+</style>
 </head>
 <body>
-  <nav>
-    <div class="nav-left">Proxperity</div>
-    <div class="nav-right">
-      <a href="#">Home</a>
-      <a href="#">Packages</a>
-      <a href="#">Contacts</a>
-      <a href="iede.html">Iede</a>
+
+<!-- Floating shapes -->
+<div class="shape" style="top:10%; left:20%; width:40px; height:40px;"></div>
+<div class="shape" style="top:70%; left:80%; width:30px; height:30px;"></div>
+<div class="shape" style="top:50%; left:50%; width:50px; height:50px;"></div>
+<div class="shape" style="top:30%; left:10%; width:20px; height:20px;"></div>
+
+<!-- Navbar -->
+<nav>
+    <div class="logo">Kyson</div>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Hi, I'm Kyson</h1>
+    <p>Creating futuristic, highly-decorated web experiences with black & pink neon aesthetics and fluid animations.</p>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <h2 class="section-title reveal">About Me</h2>
+    <p class="reveal" style="text-align:center; max-width:800px; margin:auto;">
+        I'm a web designer and developer obsessed with neon gradients, animations, and maximalist aesthetics. I build websites that look alive and unforgettable.
+    </p>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+    <h2 class="section-title reveal">Skills</h2>
+    <div class="skills reveal">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">React</div>
+        <div class="skill">Three.js</div>
+        <div class="skill">Figma</div>
     </div>
-  </nav>
-  <header>
-    <h1>Proxperity</h1>
-    <p>Revolutionary: iOS projects, tweaks and development.</p>
-  </header>
-  <section class="slideshow-container">
-    <div class="slides">
-      <div class="slide active">Tweak 1 - Dynamic Island Customizer</div>
-      <div class="slide">Tweak 2 - LockScreen Glass UI</div>
-      <div class="slide">Tweak 3 - Notification Overhaul</div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+    <h2 class="section-title reveal">Projects</h2>
+    <div class="projects">
+        <div class="project-card reveal">
+            <h3>Project One</h3>
+            <p>A futuristic web app with animated neon gradients and interactive UI elements.</p>
+        </div>
+        <div class="project-card reveal">
+            <h3>Project Two</h3>
+            <p>A high-decor portfolio with scroll-triggered animations and hover effects.</p>
+        </div>
+        <div class="project-card reveal">
+            <h3>Project Three</h3>
+            <p>Creative project integrating JavaScript particle effects and responsive design.</p>
+        </div>
     </div>
-  </section>
-  <section class="iede">
-    <h2>Iede</h2>
-    <p>Minecraft General Purpose Executor. Coming in 2026.</p>
-    <div class="buttons">
-      <button disabled>Coming Soon</button>
-      <a href="iede.html" class="learn-more">Learn More</a>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <h2 class="section-title reveal">Contact Me</h2>
+    <div class="contact-icons reveal">
+        <a href="https://github.com/"><img src="github.png" alt="GitHub"></a>
+        <a href="https://twitter.com/"><img src="twitter.png" alt="Twitter"></a>
+        <a href="https://linkedin.com/"><img src="linkedin.png" alt="LinkedIn"></a>
     </div>
-  </section>
+</section>
+
+<!-- Footer -->
+<footer>
+    &copy; 2025 Kyson. All rights reserved.
+</footer>
+
+<script>
+// Scroll Reveal
+const reveals = document.querySelectorAll('.reveal');
+window.addEventListener('scroll', () => {
+    const triggerBottom = window.innerHeight / 5 * 4;
+    reveals.forEach(reveal => {
+        const revealTop = reveal.getBoundingClientRect().top;
+        if(revealTop < triggerBottom) { reveal.classList.add('active'); }
+    });
+});
+
+// Animate floating shapes
+const shapes = document.querySelectorAll('.shape');
+shapes.forEach(shape => {
+    let top = parseInt(shape.style.top);
+    let left = parseInt(shape.style.left);
+    let speed = Math.random()*0.5 + 0.1;
+    function move(){
+        top += speed;
+        if(top>100) top=-10;
+        shape.style.top=top+'%';
+        requestAnimationFrame(move);
+    }
+    move();
+});
+</script>
+
 </body>
 </html>
