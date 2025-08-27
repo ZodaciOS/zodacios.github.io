@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kyson's Hyper Portfolio</title>
+<title>Kyson's Maximalist Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-/* Reset */
+/* Reset & Base */
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
@@ -17,12 +17,12 @@ body{
     position:relative;
 }
 
-/* Rain background */
+/* Rain + Particles Background */
 body::before{
     content:"";
     position:fixed;
-    top:0;left:0;
-    width:100%;height:100%;
+    top:0; left:0;
+    width:100%; height:100%;
     background:url('rain.jpeg');
     background-size:50px 50px;
     background-repeat:repeat;
@@ -33,10 +33,8 @@ body::before{
 }
 @keyframes rain{0%{background-position:0 0;}100%{background-position:0 1000px;}}
 
-/* Neon particles */
 #particles{
-    position:fixed;
-    top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
+    position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
 }
 
 /* Navbar */
@@ -60,7 +58,9 @@ nav ul li a::after{
 nav ul li a:hover::after{width:100%;}
 
 /* Hero */
-.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;z-index:1;}
+.hero{
+    height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;z-index:1;
+}
 .hero h1{
     font-size:4rem;font-weight:700;
     background:linear-gradient(90deg,#ff2f92,#ff00d4);
@@ -69,7 +69,7 @@ nav ul li a:hover::after{width:100%;}
     text-shadow:0 0 15px #ff2f92,0 0 25px #ff00d4;
 }
 .hero p{
-    margin-top:1rem;font-size:1.5rem;max-width:600px;line-height:1.5;color:#ddd;
+    margin-top:1rem;font-size:1.5rem;max-width:700px;line-height:1.5;color:#ddd;
     opacity:0;transform:translateY(20px);
     animation:fadeUp 1s forwards 0.5s;
 }
@@ -87,14 +87,17 @@ section{padding:6rem 3rem;min-height:100vh;position:relative;z-index:1;}
 
 /* Skills */
 .skills{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
-.skill{background:linear-gradient(90deg,#ff2f92,#ff00d4);padding:0.8rem 1.5rem;border-radius:20px;font-weight:600;text-shadow:0 0 5px #ff2f92;transition:transform 0.3s;}
-.skill:hover{transform:scale(1.2);}
+.skill{
+    background:linear-gradient(90deg,#ff2f92,#ff00d4);
+    padding:0.8rem 1.5rem;border-radius:50%;font-weight:600;text-shadow:0 0 5px #ff2f92;transition:transform 0.3s;
+}
+.skill:hover{transform:scale(1.3);}
 
 /* Projects */
 .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
 .project-card{
-    background:rgba(255,0,146,0.1);border:2px solid transparent;
-    border-image:linear-gradient(45deg,#ff2f92,#ff00d4) 1;
+    background:rgba(255,0,146,0.1);
+    border:2px solid transparent;border-image:linear-gradient(45deg,#ff2f92,#ff00d4) 1;
     border-radius:15px;padding:2rem;backdrop-filter:blur(10px);
     transition:transform 0.5s,box-shadow 0.5s,border 0.5s;position:relative;overflow:hidden;
 }
@@ -161,14 +164,14 @@ footer{text-align:center;padding:2rem;background:rgba(0,0,0,0.7);}
 <!-- Hero -->
 <section class="hero">
     <h1>Hi, I'm Kyson</h1>
-    <p>Creating hyper-decorated, neon-gradient, interactive web experiences with maximalist aesthetics.</p>
+    <p>Maximalist neon web experiences with interactive gradients and animations.</p>
 </section>
 
 <!-- About -->
 <section id="about">
     <h2 class="section-title reveal">About Me</h2>
-    <p class="reveal" style="text-align:center; max-width:800px; margin:auto;">
-        I’m a web designer/developer obsessed with neon, animation, and maximalism. I craft sites that feel alive.
+    <p class="reveal" style="text-align:center;max-width:800px;margin:auto;">
+        I'm a web designer/developer obsessed with neon gradients, glowing animations, and interactive maximalist aesthetics.
     </p>
 </section>
 
@@ -191,7 +194,7 @@ footer{text-align:center;padding:2rem;background:rgba(0,0,0,0.7);}
     <div class="projects">
         <div class="project-card reveal">
             <h3>Project One</h3>
-            <p>Futuristic web app with neon gradients and interactive UI.</p>
+            <p>Interactive neon web app with glowing effects.</p>
         </div>
         <div class="project-card reveal">
             <h3>Project Two</h3>
@@ -199,7 +202,7 @@ footer{text-align:center;padding:2rem;background:rgba(0,0,0,0.7);}
         </div>
         <div class="project-card reveal">
             <h3>Project Three</h3>
-            <p>Interactive project with particles and responsive design.</p>
+            <p>Creative project integrating particles and responsive design.</p>
         </div>
     </div>
 </section>
@@ -261,5 +264,6 @@ function animateParticles(){
 animateParticles();
 window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
 </script>
+
 </body>
 </html>
