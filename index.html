@@ -22,20 +22,6 @@
     top: 0;
   }
 }
-
-  /* iPad centering fix */
-@media (max-width: 1200px) and (min-width: 981px) {
-  .container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-  .grid {
-    grid-template-columns: 1fr 320px; /* shrink sidebar more */
-    justify-content: center; /* centers the grid */
-  }
-}
   :root{
     --bg-dark: #060614;
     --mid-dark: #0b1221;
@@ -466,6 +452,61 @@
   .muted{color:var(--muted)}
   .spacer{height:12px}
   code{background: rgba(0,0,0,0.25); padding:2px 6px;border-radius:6px}
+
+  /* -----------------------
+     iPad / Tablet fixes (non-invasive overrides)
+     - ensures the "Ongoing Projects" title + grid sit in the left column
+     - centers the container on tablet widths
+     - keeps two columns for projects on iPad
+     ----------------------- */
+  @media (min-width: 768px) and (max-width: 1200px) {
+    /* center container and add breathing room on tablets */
+    .container {
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+
+    /* make the grid use a flexible left column + a narrower sidebar */
+    .grid {
+      grid-template-columns: 1fr 340px !important;
+      gap: 24px !important;
+      align-items: start;
+      justify-content: center;
+    }
+
+    /* relax sticky sidebar on tablets */
+    .right-column {
+      position: relative;
+      top: 0;
+      margin-top: 6px;
+    }
+
+    /* Force the projects title and the projects grid to occupy the main (left) column
+       when they appear right after the hero card in the DOM (this matches your current markup)
+       This prevents the title from jumping into the sidebar cell. */
+    .card.hero + .section-title,
+    .card.hero + .section-title + .projects-grid {
+      grid-column: 1 / 2;
+      justify-self: stretch;
+      width: 100%;
+      margin-left: 0;
+    }
+
+    /* ensure the projects grid shows two columns (side-by-side) on iPad */
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 18px;
+      margin-top: 14px;
+    }
+
+    /* make sure the section title for projects is visually aligned with left column */
+    .card.hero + .section-title {
+      text-align: left;
+      margin-bottom: 12px;
+    }
+  }
 </style>
 </head>
 <body>
