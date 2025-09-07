@@ -1,269 +1,554 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kyson's Maximalist Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
-/* Reset & Base */
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-    font-family:'Inter',sans-serif;
-    background:#000;
-    color:#fff;
-    overflow-x:hidden;
-    position:relative;
-}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>[YOUR NAME] — Portfolio</title>
 
-/* Rain + Particles Background */
-body::before{
-    content:"";
+<!-- Inter font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg-dark: #060614;
+    --mid-dark: #0b1221;
+    --pink-1: #ff5ca8;
+    --pink-2: #ff87d0;
+    --blue-light: #6ee7ff;
+    --blue-mid: #3b82f6;
+    --blue-dark: #06133b;
+    --glass: rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.06);
+    --text: #e6eef9;
+    --muted: #9fb3d6;
+    --accent-gradient: linear-gradient(90deg, var(--pink-1), var(--blue-light), var(--blue-mid));
+    --transition: 420ms cubic-bezier(.2,.9,.2,1);
+  }
+
+  /* Reset & base */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    background:
+      radial-gradient(1200px 600px at 10% 20%, rgba(255,92,168,0.08), transparent 12%),
+      radial-gradient(900px 500px at 90% 80%, rgba(59,130,246,0.06), transparent 10%),
+      linear-gradient(180deg,var(--bg-dark), #05040a 60%);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  /* animated background waves */
+  .bg-animated{
     position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:url('rain.jpeg');
-    background-size:50px 50px;
-    background-repeat:repeat;
-    opacity:0.3;
+    inset:0;
     z-index:0;
     pointer-events:none;
-    animation:rain 20s linear infinite;
-}
-@keyframes rain{0%{background-position:0 0;}100%{background-position:0 1000px;}}
+    background:
+      conic-gradient(from 200deg at 10% 20%, rgba(255,92,168,0.06), transparent 40%),
+      conic-gradient(from 50deg at 90% 80%, rgba(59,130,246,0.05), transparent 40%);
+    mix-blend-mode:screen;
+    animation: bgShift 18s linear infinite;
+    opacity:0.9;
+  }
+  @keyframes bgShift{
+    0%{transform:translateY(0) rotate(0deg)}
+    50%{transform:translateY(-20px) rotate(2deg)}
+    100%{transform:translateY(0) rotate(0deg)}
+  }
 
-#particles{
-    position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
-}
+  .container{
+    position:relative;
+    z-index:3;
+    max-width:1200px;
+    margin:48px auto;
+    padding:40px;
+  }
 
-/* Navbar */
-nav{
-    position:fixed;top:0;width:100%;display:flex;justify-content:space-between;align-items:center;
-    padding:1rem 3rem;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);z-index:100;
-}
-nav .logo{
-    font-size:2rem;font-weight:700;
-    background:linear-gradient(90deg,#ff2f92,#ff00d4);
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    text-shadow:0 0 15px #ff2f92;
-}
-nav ul{display:flex;list-style:none;gap:2rem;}
-nav ul li a{
-    color:#fff;text-decoration:none;font-weight:600;position:relative;transition:0.3s;
-}
-nav ul li a::after{
-    content:'';position:absolute;width:0;height:2px;bottom:-3px;left:0;background:#ff2f92;transition:0.3s;
-}
-nav ul li a:hover::after{width:100%;}
+  /* Header */
+  header.site-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:28px;
+  }
+  .brand{
+    display:flex;
+    gap:14px;
+    align-items:center;
+  }
+  .logo {
+    width:56px; height:56px;
+    border-radius:12px;
+    background: linear-gradient(135deg,var(--pink-1),var(--blue-mid));
+    box-shadow: 0 6px 22px rgba(10,10,20,0.6), inset 0 -6px 18px rgba(255,255,255,0.02);
+    display:grid;
+    place-items:center;
+    color:#fff;
+    font-weight:800;
+    font-size:18px;
+  }
+  .brand h2{
+    margin:0;
+    font-weight:700;
+    letter-spacing: -0.6px;
+  }
+  .brand p{margin:0;color:var(--muted);font-size:13px}
 
-/* Hero */
-.hero{
-    height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;z-index:1;
-}
-.hero h1{
-    font-size:4rem;font-weight:700;
-    background:linear-gradient(90deg,#ff2f92,#ff00d4);
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    animation:gradientText 5s infinite alternate;
-    text-shadow:0 0 15px #ff2f92,0 0 25px #ff00d4;
-}
-.hero p{
-    margin-top:1rem;font-size:1.5rem;max-width:700px;line-height:1.5;color:#ddd;
-    opacity:0;transform:translateY(20px);
-    animation:fadeUp 1s forwards 0.5s;
-}
-@keyframes gradientText{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
-@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+  /* layout */
+  .grid{
+    display:grid;
+    grid-template-columns: 1fr 380px;
+    gap:28px;
+    align-items:start;
+  }
 
-/* Sections */
-section{padding:6rem 3rem;min-height:100vh;position:relative;z-index:1;}
-.section-title{
-    font-size:2.5rem;font-weight:700;text-align:center;margin-bottom:3rem;
-    background:linear-gradient(90deg,#ff2f92,#ff00d4);
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-    text-shadow:0 0 10px #ff2f92,0 0 20px #ff00d4;
-}
+  /* card styles */
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    border:1px solid var(--card-border);
+    padding:28px;
+    border-radius:14px;
+    backdrop-filter: blur(8px) saturate(1.05);
+    box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+    overflow:hidden;
+  }
 
-/* Skills */
-.skills{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
-.skill{
-    background:linear-gradient(90deg,#ff2f92,#ff00d4);
-    padding:0.8rem 1.5rem;border-radius:50%;font-weight:600;text-shadow:0 0 5px #ff2f92;transition:transform 0.3s;
-}
-.skill:hover{transform:scale(1.3);}
+  /* Hero */
+  .hero{
+    min-height:320px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:18px;
+    position:relative;
+  }
+  .placeholder-title{
+    font-size:36px;
+    margin:0;
+    font-weight:800;
+    letter-spacing:-1px;
+    color:var(--text);
+    background: linear-gradient(90deg,var(--pink-1),var(--blue-light));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color: transparent;
+  }
+  .placeholder-sub{
+    margin:0;
+    color:var(--muted);
+    font-size:16px;
+    max-width:800px;
+  }
 
-/* Projects */
-.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
-.project-card{
-    background:rgba(255,0,146,0.1);
-    border:2px solid transparent;border-image:linear-gradient(45deg,#ff2f92,#ff00d4) 1;
-    border-radius:15px;padding:2rem;backdrop-filter:blur(10px);
-    transition:transform 0.5s,box-shadow 0.5s,border 0.5s;position:relative;overflow:hidden;
-}
-.project-card::before{
-    content:'';position:absolute;top:0;left:0;width:100%;height:100%;
-    background:radial-gradient(circle,#ff2f92,transparent 70%);opacity:0;transition:opacity 0.5s;
-}
-.project-card:hover::before{opacity:0.2;}
-.project-card:hover{transform:translateY(-10px) rotate(-1deg);box-shadow:0 15px 40px rgba(255,47,146,0.7);}
-.project-card h3{font-size:1.6rem;margin-bottom:1rem;color:#fff;}
-.project-card p{color:#ccc;}
+  .cta-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:6px;
+  }
+  .btn{
+    padding:10px 14px;
+    border-radius:999px;
+    font-weight:600;
+    background:var(--accent-gradient);
+    border:none;
+    color:#041027;
+    cursor:pointer;
+    transition:transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 6px 18px rgba(50,40,80,0.25);
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn.ghost{
+    background:transparent;
+    color:var(--text);
+    border:1px solid rgba(255,255,255,0.06);
+    box-shadow:none;
+  }
 
-/* Contact */
-.contact{display:flex;flex-direction:column;align-items:center;gap:2rem;}
-.contact-icons{display:flex;gap:2rem;}
-.contact-icons a img{
-    width:50px;filter:drop-shadow(0 0 5px #ff2f92);
-    transition:transform 0.3s,filter 0.3s;
-}
-.contact-icons a img:hover{
-    transform:scale(1.3) rotate(15deg);
-    filter:drop-shadow(0 0 20px #ff2f92);
-}
+  /* right column */
+  .right-column { position:sticky; top:28px; align-self:start; }
 
-/* Floating Neon Shapes */
-.shape{
-    position:fixed;width:30px;height:30px;
-    background:linear-gradient(45deg,#ff2f92,#ff00d4);
-    border-radius:50%;opacity:0.6;z-index:0;pointer-events:none;
-    animation:floatAnim linear infinite;
-}
-@keyframes floatAnim{0%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-50px) rotate(180deg);}100%{transform:translateY(0) rotate(360deg);}}
+  /* Skills */
+  .section-title{
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:12px;
+  }
 
-/* Footer */
-footer{text-align:center;padding:2rem;background:rgba(0,0,0,0.7);}
+  .skill{
+    margin-bottom:18px;
+  }
+  .skill-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:8px;
+  }
+  .skill-name{font-weight:700;color:var(--text)}
+  .skill-percent{font-weight:700;color:var(--muted); font-feature-settings: "tnum";}
 
-/* Scroll Reveal */
-.reveal{opacity:0;transform:translateY(50px);transition:all 0.8s ease-out;}
-.reveal.active{opacity:1;transform:translateY(0);}
+  .progress-track{
+    height:14px;
+    width:100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+    border-radius:999px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.02);
+    position:relative;
+  }
+  .progress-fill{
+    height:100%;
+    width:0%;
+    transition: width 1.4s cubic-bezier(.2,.9,.2,1);
+    border-radius:999px;
+    background: linear-gradient(90deg, var(--pink-1), var(--pink-2), var(--blue-light), var(--blue-mid));
+    background-size: 240% 100%;
+    animation: gradMove 3.6s linear infinite;
+    position:relative;
+  }
+  .progress-fill::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    mix-blend-mode:overlay;
+    border-radius:999px;
+    pointer-events:none;
+  }
+  @keyframes gradMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+
+  /* software list badges */
+  .software-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:6px;
+  }
+  .sw-badge{
+    padding:8px 12px;
+    border-radius:999px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+    border:1px solid rgba(255,255,255,0.03);
+    color:var(--text);
+    font-weight:600;
+    font-size:13px;
+    box-shadow: 0 6px 20px rgba(3,10,25,0.45);
+  }
+
+  /* hobbies */
+  .hobby-list{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:10px;
+    margin-top:6px;
+  }
+  .hobby{
+    padding:10px;
+    border-radius:10px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+    border:1px solid rgba(255,255,255,0.02);
+    color:var(--muted);
+    font-weight:600;
+  }
+
+  /* contacts */
+  .contacts{
+    display:flex;
+    gap:12px;
+    margin-top:10px;
+  }
+  .contact-btn{
+    width:56px;height:56px;border-radius:999px;
+    display:inline-grid;place-items:center;
+    border:0;
+    cursor:pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+    background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+    border:1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 10px 24px rgba(2,6,23,0.6);
+    color:var(--text);
+  }
+  .contact-btn:hover{ transform:translateY(-6px) scale(1.04); }
+  .contact-btn .btn-inner{
+    width:46px;height:46px;border-radius:999px; display:grid; place-items:center;
+    background:var(--accent-gradient);
+    box-shadow: inset 0 -6px 14px rgba(0,0,0,0.12);
+  }
+
+  /* Projects placeholder */
+  .projects-grid{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:12px;
+    margin-top:12px;
+  }
+  .project-tile{
+    min-height:120px;
+    border-radius:10px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04));
+    border:1px solid rgba(255,255,255,0.02);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--muted);
+    font-weight:700;
+  }
+
+  /* Fade-in animations on scroll */
+  .animate-on-scroll{opacity:0; transform:translateY(12px); transition:opacity 700ms cubic-bezier(.2,.9,.2,1), transform 700ms cubic-bezier(.2,.9,.2,1);}
+  .animate-on-scroll.in{opacity:1; transform:none;}
+
+  /* small responsive tweaks */
+  @media (max-width:980px){
+    .grid{grid-template-columns:1fr; padding-bottom:40px}
+    .right-column{position:static}
+  }
+  @media (max-width:520px){
+    .placeholder-title{font-size:28px}
+    .brand h2{font-size:16px}
+  }
+
+  /* Tiny helpers */
+  .muted{color:var(--muted)}
+  .spacer{height:12px}
+  code{background: rgba(0,0,0,0.25); padding:2px 6px;border-radius:6px}
 </style>
 </head>
 <body>
+  <div class="bg-animated" aria-hidden="true"></div>
 
-<!-- Particle Canvas -->
-<canvas id="particles"></canvas>
-
-<!-- Floating shapes -->
-<div class="shape" style="top:10%;left:20%;width:40px;height:40px;"></div>
-<div class="shape" style="top:70%;left:80%;width:30px;height:30px;"></div>
-<div class="shape" style="top:50%;left:50%;width:50px;height:50px;"></div>
-<div class="shape" style="top:30%;left:10%;width:20px;height:20px;"></div>
-
-<!-- Navbar -->
-<nav>
-    <div class="logo">Kyson</div>
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
-
-<!-- Hero -->
-<section class="hero">
-    <h1>Hi, I'm Kyson</h1>
-    <p>Maximalist neon web experiences with interactive gradients and animations.</p>
-</section>
-
-<!-- About -->
-<section id="about">
-    <h2 class="section-title reveal">About Me</h2>
-    <p class="reveal" style="text-align:center;max-width:800px;margin:auto;">
-        I'm a web designer/developer obsessed with neon gradients, glowing animations, and interactive maximalist aesthetics.
-    </p>
-</section>
-
-<!-- Skills -->
-<section id="skills">
-    <h2 class="section-title reveal">Skills</h2>
-    <div class="skills reveal">
-        <div class="skill">HTML</div>
-        <div class="skill">CSS</div>
-        <div class="skill">JavaScript</div>
-        <div class="skill">React</div>
-        <div class="skill">Three.js</div>
-        <div class="skill">Figma</div>
-    </div>
-</section>
-
-<!-- Projects -->
-<section id="projects">
-    <h2 class="section-title reveal">Projects</h2>
-    <div class="projects">
-        <div class="project-card reveal">
-            <h3>Project One</h3>
-            <p>Interactive neon web app with glowing effects.</p>
+  <div class="container">
+    <header class="site-header">
+      <div class="brand">
+        <div class="logo">Y</div>
+        <div>
+          <h2 class="muted">[YOUR NAME HERE]</h2>
+          <p class="muted">[YOUR TAGLINE / ROLE — placeholder]</p>
         </div>
-        <div class="project-card reveal">
-            <h3>Project Two</h3>
-            <p>High-decor portfolio with scroll-triggered animations.</p>
-        </div>
-        <div class="project-card reveal">
-            <h3>Project Three</h3>
-            <p>Creative project integrating particles and responsive design.</p>
-        </div>
-    </div>
-</section>
+      </div>
+      <nav>
+        <button class="btn ghost" aria-label="Download CV">[CV]</button>
+        <button class="btn" aria-label="Contact me">[CONTACT]</button>
+      </nav>
+    </header>
 
-<!-- Contact -->
-<section id="contact" class="contact">
-    <h2 class="section-title reveal">Contact Me</h2>
-    <div class="contact-icons reveal">
-        <a href="https://github.com/"><img src="github.png" alt="GitHub"></a>
-        <a href="https://twitter.com/"><img src="twitter.png" alt="Twitter"></a>
-        <a href="https://linkedin.com/"><img src="linkedin.png" alt="LinkedIn"></a>
-    </div>
-</section>
+    <main class="grid">
+      <!-- LEFT: main content -->
+      <section class="card hero animate-on-scroll" aria-labelledby="hero-title">
+        <h1 id="hero-title" class="placeholder-title">[YOUR NAME]</h1>
+        <p class="placeholder-sub">[SHORT BIO / HEADLINE — replace this placeholder text with a short, punchy paragraph describing you]</p>
 
-<!-- Footer -->
-<footer>
-    &copy; 2025 Kyson. All rights reserved.
-</footer>
+        <div class="cta-row">
+          <button class="btn">[Primary CTA]</button>
+          <button class="btn ghost">[Secondary CTA]</button>
+        </div>
+
+        <div class="spacer"></div>
+
+        <!-- Projects / portfolio placeholders -->
+        <div>
+          <div class="section-title">Projects (placeholders)</div>
+          <div class="projects-grid">
+            <div class="project-tile animate-on-scroll">[PROJECT 1]</div>
+            <div class="project-tile animate-on-scroll">[PROJECT 2]</div>
+            <div class="project-tile animate-on-scroll">[PROJECT 3]</div>
+            <div class="project-tile animate-on-scroll">[PROJECT 4]</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: sidebar -->
+      <aside class="right-column">
+        <div class="card animate-on-scroll">
+          <div class="section-title">Programming Languages</div>
+
+          <!-- Objective-C -->
+          <div class="skill" data-skill="Objective-C">
+            <div class="skill-header">
+              <span class="skill-name">Objective-C</span>
+              <span class="skill-percent" data-target="15">0%</span>
+            </div>
+            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Objective-C skill">
+              <div class="progress-fill" style="--percent:15"></div>
+            </div>
+          </div>
+
+          <!-- Luau -->
+          <div class="skill" data-skill="Luau">
+            <div class="skill-header">
+              <span class="skill-name">Luau</span>
+              <span class="skill-percent" data-target="5">0%</span>
+            </div>
+            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Luau skill">
+              <div class="progress-fill" style="--percent:5"></div>
+            </div>
+          </div>
+
+          <!-- Python -->
+          <div class="skill" data-skill="Python">
+            <div class="skill-header">
+              <span class="skill-name">Python</span>
+              <span class="skill-percent" data-target="12">0%</span>
+            </div>
+            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Python skill">
+              <div class="progress-fill" style="--percent:12"></div>
+            </div>
+          </div>
+
+          <div class="spacer"></div>
+
+          <div class="section-title">Software / Tools</div>
+          <div class="software-grid">
+            <div class="sw-badge">Theos</div>
+            <div class="sw-badge">FridaCodeManager</div>
+            <div class="sw-badge">Ghidra</div>
+            <div class="sw-badge">Frida</div>
+          </div>
+        </div>
+
+        <div class="card animate-on-scroll" style="margin-top:18px">
+          <div class="section-title">Hobbies & Focus</div>
+          <div class="hobby-list">
+            <div class="hobby">Web Development</div>
+            <div class="hobby">Network Research</div>
+            <div class="hobby">iOS Security Researcher</div>
+            <div class="hobby">Roblox Exploiting</div>
+            <div class="hobby">Vulnerability Research &amp; Reverse Engineering</div>
+            <div class="hobby muted">[ADD MORE]</div>
+          </div>
+        </div>
+
+        <div class="card animate-on-scroll" style="margin-top:18px">
+          <div class="section-title">Contacts</div>
+          <div class="contacts" role="list">
+            <!-- GitHub -->
+            <button class="contact-btn" aria-label="GitHub profile" role="listitem" onclick="window.open('#','_blank')">
+              <span class="btn-inner" aria-hidden="true">
+                <!-- simple GitHub mark -->
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.55v-2.02c-3.2.7-3.88-1.38-3.88-1.38-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.67 1.25 3.32.96.1-.75.4-1.25.72-1.54-2.56-.29-5.26-1.28-5.26-5.72 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18.92-.26 1.9-.39 2.88-.39s1.96.13 2.88.39c2.19-1.5 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.73.8 1.18 1.83 1.18 3.09 0 4.46-2.71 5.42-5.29 5.7.41.35.77 1.03.77 2.08v3.09c0 .3.21.66.79.55C20.71 21.38 24 17.08 24 12 24 5.73 18.27.5 12 .5z"/>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Discord (server) -->
+            <button class="contact-btn" aria-label="Discord server" role="listitem" onclick="window.open('#','_blank')">
+              <span class="btn-inner" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 71 55" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M60.104 4.5A58.9 58.9 0 0 0 46.8 0c0 0-1.4 2.6-3.2 4.8-9.2-1.3-18.8-1.3-27.8 0C12.7 2.6 11.3 0 11.3 0 6.1 0 1.6 2 0 4.5 0 16.3 3.6 27.6 9.8 36.4c7.2 10.4 16.2 15.2 16.2 15.2 1.1-.9 2-1.8 2.8-2.8 0 0 6.2 1 11.1 1 4.9 0 10.9-1 10.9-1 .8 1 1.7 1.9 2.8 2.8 0 0 8.9-4.9 16.2-15.3 6.1-8.8 9.8-20 9.8-31.8-.7-2.5-5.2-4.5-10.4-4.5 0 0-1.4 2.6-3.2 4.8-9.2-1.3-18.8-1.3-27.8 0C61.5 7.1 60.1 4.5 60.1 4.5z"/>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Twitter -->
+            <button class="contact-btn" aria-label="Twitter" role="listitem" onclick="window.open('#','_blank')">
+              <span class="btn-inner" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M23 4.56c-.8.36-1.6.6-2.5.71a4.25 4.25 0 0 0 1.87-2.35 8.46 8.46 0 0 1-2.7 1.04 4.22 4.22 0 0 0-7.19 3.85A12 12 0 0 1 3.1 3.3a4.22 4.22 0 0 0 1.31 5.63 4.17 4.17 0 0 1-1.91-.53v.05a4.22 4.22 0 0 0 3.39 4.13c-.4.1-.8.15-1.22.15-.3 0-.6-.03-.88-.08a4.24 4.24 0 0 0 3.95 2.93A8.48 8.48 0 0 1 1.5 19.54a12 12 0 0 0 6.5 1.9c7.8 0 12.07-6.46 12.07-12.07v-.55A8.6 8.6 0 0 0 23 4.56z"/>
+                </svg>
+              </span>
+            </button>
+
+            <!-- YouTube -->
+            <button class="contact-btn" aria-label="YouTube" role="listitem" onclick="window.open('#','_blank')">
+              <span class="btn-inner" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M23.5 6.2s-.2-1.7-.8-2.4c-.7-.8-1.5-.8-1.9-.9C17.6 2.2 12 2.2 12 2.2h-.1s-5.6 0-8.8.7c-.4.1-1.2.1-1.9.9C.2 4.6 0 6.2 0 6.2S0 8 0 9.9v4.1c0 1.9.1 3.7.1 3.7s.2 1.7.8 2.4c.7.8 1.6.8 2 .9 1.5.2 6.6.7 9.1.7h.1s5.6 0 8.8-.7c.4-.1 1.2-.1 1.9-.9.6-.7.8-2.4.8-2.4s.1-1.8.1-3.7V9.9c0-1.9-.1-3.7-.1-3.7zM9.8 15.1V8.9l6 3.1-6 3.1z"/>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer style="margin-top:28px; text-align:center; color:var(--muted); font-size:13px">
+      [FOOTER PLACEHOLDER — copyright, small links]
+    </footer>
+  </div>
 
 <script>
-// Scroll Reveal
-const reveals = document.querySelectorAll('.reveal');
-window.addEventListener('scroll',()=>{
-    const triggerBottom = window.innerHeight/5*4;
-    reveals.forEach(reveal=>{
-        const revealTop=reveal.getBoundingClientRect().top;
-        if(revealTop<triggerBottom){reveal.classList.add('active');}
-    });
-});
+/*
+  Animations and interaction:
+  - Fade-in sections when they enter the viewport
+  - Animate skill bars and numeric counters
+  - Replace placeholders as needed
+*/
 
-// Floating shapes animation
-const shapes=document.querySelectorAll('.shape');
-shapes.forEach(shape=>{
-    let top=parseInt(shape.style.top);
-    function move(){top+=0.2;if(top>100)top=-10;shape.style.top=top+'%';requestAnimationFrame(move);}
-    move();
-});
+/* Helper: animate numeric counter */
+function animateNumber(el, start, end, duration=900){
+  const startTime = performance.now();
+  function step(now){
+    const t = Math.min(1, (now - startTime) / duration);
+    const eased = t < 0.5 ? 2*t*t : -1 + (4-2*t)*t; // smooth ease
+    const current = Math.round(start + (end - start) * eased);
+    el.textContent = current + '%';
+    if(t < 1) requestAnimationFrame(step);
+    else el.textContent = end + '%';
+  }
+  requestAnimationFrame(step);
+}
 
-// Particles
-const canvas=document.getElementById('particles');
-const ctx=canvas.getContext('2d');
-canvas.width=window.innerWidth;canvas.height=window.innerHeight;
-let particles=[];
-for(let i=0;i<150;i++){
-    particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,speed:Math.random()*0.5+0.1});
+/* Animate progress fills when visible */
+const skillElems = document.querySelectorAll('.skill');
+const io = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      const skill = entry.target;
+      const percentEl = skill.querySelector('.skill-percent');
+      const target = parseInt(percentEl.getAttribute('data-target') || '0', 10);
+      // animate number
+      animateNumber(percentEl, 0, target, 1100);
+      // animate bar width
+      const fill = skill.querySelector('.progress-fill');
+      if(fill){
+        // set width
+        fill.style.width = target + '%';
+        // set aria
+        const track = skill.querySelector('.progress-track');
+        if(track) track.setAttribute('aria-valuenow', String(target));
+      }
+      observer.unobserve(skill);
+    }
+  });
+},{threshold:0.18});
+
+/* Observe skills */
+skillElems.forEach(s => io.observe(s));
+
+/* Fade-in observer for other things */
+const fades = document.querySelectorAll('.animate-on-scroll');
+const fadeObserver = new IntersectionObserver((entries, obs) => {
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.12});
+fades.forEach(f => fadeObserver.observe(f));
+
+/* Small - reduce motion respect */
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.querySelectorAll('.progress-fill').forEach(el=>{
+    el.style.transition = 'none';
+    el.style.animation = 'none';
+  });
 }
-function animateParticles(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach(p=>{
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle='rgba(255,47,146,0.7)';
-        ctx.fill();
-        p.y+=p.speed;
-        if(p.y>canvas.height)p.y=0;
-    });
-    requestAnimationFrame(animateParticles);
-}
-animateParticles();
-window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
 </script>
-
 </body>
 </html>
