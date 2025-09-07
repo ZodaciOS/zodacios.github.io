@@ -343,6 +343,32 @@
   font-size:14px;
 }
 
+  .status-badge {
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+  color:white;
+  margin:6px 0;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Variants */
+.status-badge.in-dev {
+  background: linear-gradient(135deg, #ff4d6d, #ff1e56);
+}
+.status-badge.released {
+  background: linear-gradient(135deg, #28a745, #34d058);
+}
+.status-badge.archived {
+  background: linear-gradient(135deg, #ffc107, #ffb347);
+  color:black;
+}
+.status-badge.unreleased {
+  background: linear-gradient(135deg, #007bff, #3399ff);
+}
+
   /* Fade-in animations on scroll */
   .animate-on-scroll{opacity:0; transform:translateY(12px); transition:opacity 700ms cubic-bezier(.2,.9,.2,1), transform 700ms cubic-bezier(.2,.9,.2,1);}
   .animate-on-scroll.in{opacity:1; transform:none;}
@@ -396,25 +422,24 @@
 
 <div class="section-title">Ongoing Projects</div>
 <div class="projects-grid">
-  <!-- Project card -->
-  <div class="project-card animate-on-scroll">
-    <div class="project-icon">
-      <!-- Replace with SVG/logo -->
-      <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
-    </div>
-    <h3 class="project-title">InstanceX</h3>
-    <p class="project-desc">Jailbroken tweak in-development to run up to 4 instances of an app at the same time using libCrane.</p>
-    <button class="btn project-btn">View</button>
+<div class="project-card animate-on-scroll">
+  <div class="project-icon">
+    <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
   </div>
+  <h3 class="project-title">InstanceX</h3>
+  <span class="status-badge in-dev">In-Development</span>
+  <p class="project-desc">A upcoming jailbroken tweak that allows you to run up to 4 instances of an app, including Roblox using libCrane.</p>
+  <button class="btn project-btn">View</button>
+</div>
 
-  <div class="project-card animate-on-scroll">
-    <div class="project-icon">
-      <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/></svg>
-    </div>
-    <h3 class="project-title">Alia</h3>
-    <p class="project-desc">Upcoming iOS executor with 100% sUNC.</p>
-    <button class="btn project-btn">View</button>
+<div class="project-card animate-on-scroll">
+  <div class="project-icon">
+    <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/></svg>
   </div>
+  <h3 class="project-title">Alia</h3>
+  <span class="status-badge in-dev">In-Development</span>
+  <p class="project-desc">An upcoming keyless iOS Roblox executor with 100% sUNC, custom Luau functions and more.</p>
+  <button class="btn project-btn">View</button>
 </div>
 
       <!-- RIGHT: sidebar -->
