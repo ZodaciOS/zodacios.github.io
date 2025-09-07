@@ -375,6 +375,54 @@
   gap: 24px;
 }
 
+  .site-footer {
+  margin-top: 40px;
+  padding: 28px 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px 14px 0 0;
+  backdrop-filter: blur(8px) saturate(1.05);
+  box-shadow: 0 -6px 20px rgba(2,6,23,0.6);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-left p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.footer-right {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 999px;
+  transition: transform var(--transition), background var(--transition);
+  background: rgba(255,255,255,0.02);
+}
+
+.footer-link:hover {
+  background: var(--accent-gradient);
+  color: #041027;
+  transform: translateY(-2px) scale(1.04);
+}
+
   /* Fade-in animations on scroll */
   .animate-on-scroll{opacity:0; transform:translateY(12px); transition:opacity 700ms cubic-bezier(.2,.9,.2,1), transform 700ms cubic-bezier(.2,.9,.2,1);}
   .animate-on-scroll.in{opacity:1; transform:none;}
