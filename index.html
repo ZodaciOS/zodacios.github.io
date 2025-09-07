@@ -11,15 +11,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-  /* Tablet scaling fix */
-@media (max-width: 1200px) and (min-width: 981px) {
+/* Phones - stacked */
+@media (max-width: 768px) {
   .grid {
-    grid-template-columns: 2fr 1fr; /* Let sidebar shrink */
-    gap: 20px;
+    grid-template-columns: 1fr;
   }
   .right-column {
-    position: relative; /* Avoid weird sticky cutoffs */
+    position: relative;
     top: 0;
+  }
+}
+
+/* Tablets & phone landscape */
+@media (min-width: 769px) and (max-width: 1180px) {
+  .grid {
+    grid-template-columns: 1.5fr 1fr; /* flexible split */
+    gap: 20px;
+  }
+  .container {
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .right-column {
+    position: relative; /* avoid sticky weirdness */
+    top: 0;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1181px) {
+  .grid {
+    grid-template-columns: 1fr 380px;
+    gap: 36px;
   }
 }
   :root{
