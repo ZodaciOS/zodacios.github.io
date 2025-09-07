@@ -11,6 +11,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
+  /* Tablet scaling fix */
+@media (max-width: 1200px) and (min-width: 981px) {
+  .grid {
+    grid-template-columns: 2fr 1fr; /* Let sidebar shrink */
+    gap: 20px;
+  }
+  .right-column {
+    position: relative; /* Avoid weird sticky cutoffs */
+    top: 0;
+  }
+}
   :root{
     --bg-dark: #060614;
     --mid-dark: #0b1221;
