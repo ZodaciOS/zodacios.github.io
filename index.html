@@ -22,6 +22,20 @@
     top: 0;
   }
 }
+
+  /* iPad centering fix */
+@media (max-width: 1200px) and (min-width: 981px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .grid {
+    grid-template-columns: 1fr 320px; /* shrink sidebar more */
+    justify-content: center; /* centers the grid */
+  }
+}
   :root{
     --bg-dark: #060614;
     --mid-dark: #0b1221;
