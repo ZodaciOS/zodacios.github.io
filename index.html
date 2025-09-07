@@ -369,6 +369,12 @@
   background: linear-gradient(135deg, #007bff, #3399ff);
 }
 
+  .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
   /* Fade-in animations on scroll */
   .animate-on-scroll{opacity:0; transform:translateY(12px); transition:opacity 700ms cubic-bezier(.2,.9,.2,1), transform 700ms cubic-bezier(.2,.9,.2,1);}
   .animate-on-scroll.in{opacity:1; transform:none;}
