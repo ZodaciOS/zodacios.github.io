@@ -45,13 +45,6 @@
     gap: 36px;
   }
 }
-
-  .card.hero + .section-title,
-.card.hero + .section-title + .projects-grid {
-  grid-column: 1 / -1;
-  justify-self: center;
-  width: 100%;
-}
   :root{
     --bg-dark: #060614;
     --mid-dark: #0b1221;
@@ -537,6 +530,47 @@
       margin-bottom: 12px;
     }
   }
+
+  /* -----------------------
+     Additional global centering + robust overrides
+     (these are last-resort overrides to guarantee centering
+      across phone-landscape, iPad and small laptops)
+     ----------------------- */
+  /* keep the grid itself constrained and centered inside the container */
+  .grid {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    grid-auto-flow: row;
+  }
+
+  /* make sure the top-level (main) projects title + grid always sit in the left/main column
+     (use the direct-child selector so sidebar-internal section-title rules are untouched) */
+  .grid > .section-title,
+  .grid > .projects-grid {
+    grid-column: 1 / 2 !important;
+    justify-self: stretch !important;
+    width: 100% !important;
+  }
+
+  /* tablet specific: keep projects two-up and centered on medium widths */
+  @media (min-width: 720px) and (max-width: 1180px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 18px !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+    .container { padding-left: 24px; padding-right: 24px; }
+  }
+
+  /* phone landscape / narrow tablets: stack to 1 column if needed */
+  @media (max-width: 740px) {
+    .projects-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+    .container { padding-left: 16px; padding-right: 16px; }
+  }
+
 </style>
 </head>
 <body>
