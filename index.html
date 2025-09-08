@@ -45,6 +45,13 @@
     gap: 36px;
   }
 }
+
+  .card.hero + .section-title,
+.card.hero + .section-title + .projects-grid {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 100%;
+}
   :root{
     --bg-dark: #060614;
     --mid-dark: #0b1221;
