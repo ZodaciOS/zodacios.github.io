@@ -12,15 +12,15 @@
                     <key>kind</key>
                     <string>software-package</string>
                     <key>url</key>
-                    <string>https://</string>
+                    <string>https://downloads.sourceforge.net/project/deltadirectinstall/url-scheme-delta-di.ipa?ts=gAAAAABoxjDGXtKn64OogCZf12J3FgRFiGWBpfL9Aho58K-iBdpXq-Hy9vCq4StRnPrD1w0I_wRj_0bz_zi1YaiTivE5Gs-iiQ%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fdeltadirectinstall%2Ffiles%2Furl-scheme-delta-di.ipa%2Fdownload%3Fuse_mirror%3Dmaster%26r%3Dhttps%3A%2F%2Fsourceforge.net%2Fprojects%2Fdeltadirectinstall%2Ffiles%2Furl-scheme-delta-di.ipa%2Fdownload</string>
                 </dict>
             </array>
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>
-                <string>com.delta.delta</string>
+                <string>com.gloop.delta</string>
                 <key>bundle-version</key>
-                <string>1.0</string>
+                <string>2.688.861</string>
                 <key>kind</key>
                 <string>software</string>
                 <key>title</key>
