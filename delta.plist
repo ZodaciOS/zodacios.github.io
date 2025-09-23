@@ -12,7 +12,7 @@
                     <key>kind</key>
                     <string>software-package</string>
                     <key>url</key>
-                    <string>https://github.com/ZodaciOS/zodacios.github.io/releases/download/Delta/url-scheme-delta-di.ipa</string>
+                    <string>https://github.com/ZodaciOS/zodacios.github.io/releases/download/Latest/Denta.ipa</string>
                 </dict>
             </array>
             <key>metadata</key>
@@ -20,7 +20,7 @@
                 <key>bundle-identifier</key>
                 <string>com.gloop.delta</string>
                 <key>bundle-version</key>
-                <string>2.688.861</string>
+                <string>2.690.721</string>
                 <key>kind</key>
                 <string>software</string>
                 <key>title</key>
