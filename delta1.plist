@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" 
+"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>items</key>
+    <array>
+        <dict>
+            <key>assets</key>
+            <array>
+                <dict>
+                    <key>kind</key>
+                    <string>software-package</string>
+                    <key>url</key>
+                    <string>https://release-assets.githubusercontent.com/github-production-release-asset/994382105/6427a563-67da-4f3a-bf04-de897fe1b6af?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-10-08T00%3A43%3A38Z&rscd=attachment%3B+filename%3Ddenta-smth.ipa&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-10-07T23%3A43%3A04Z&ske=2025-10-08T00%3A43%3A38Z&sks=b&skv=2018-11-09&sig=2vS8c0xiCcCD4DXdPfScpL%2Fm%2BWwtZA9f9RRWNOOv8Iw%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc1OTg4NDE5MywibmJmIjoxNzU5ODgwNTkzLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.Szc7F4IlCqdTlxJ7YOPBwIsCUEgcV--cQknUOo4Sj1s&response-content-disposition=attachment%3B%20filename%3Ddenta-smth.ipa&response-content-type=application%2Foctet-stream</string>
+                </dict>
+            </array>
+            <key>metadata</key>
+            <dict>
+                <key>bundle-identifier</key>
+                <string>com.gloop.deltamobile</string>
+                <key>bundle-version</key>
+                <string>2.692.841</string>
+                <key>kind</key>
+                <string>software</string>
+                <key>title</key>
+                <string>Delta</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>
