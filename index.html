@@ -32,7 +32,7 @@
     padding: 0 20px;
   }
   .right-column {
-    position: relative; 
+    position: relative;
     top: 0;
   }
 }
@@ -535,14 +535,6 @@
   }
 
 
-  .grid > .section-title,
-  .grid > .projects-grid {
-    grid-column: 1 / 2 !important;
-    justify-self: stretch !important;
-    width: 100% !important;
-  }
-
-
   @media (min-width: 720px) and (max-width: 1180px) {
     .projects-grid {
       grid-template-columns: repeat(2, 1fr) !important;
@@ -576,44 +568,78 @@
     </header>
 
     <main class="grid">
-      <section class="card hero animate-on-scroll" aria-labelledby="hero-title">
-        <h1 id="hero-title" class="placeholder-title">ZodaciOS</h1>
-        <p class="placeholder-sub">Software developer & iOS security researcher, focusing on creating iOS targetted projects & a bit of reverse engineering.</p>
+      <div>
+        <section class="card hero animate-on-scroll" aria-labelledby="hero-title">
+          <h1 id="hero-title" class="placeholder-title">ZodaciOS</h1>
+          <p class="placeholder-sub">Software developer & iOS security researcher, focusing on creating iOS targetted projects & a bit of reverse engineering.</p>
+          <div class="cta-row">
+            <a href="" class="btn">Contact Me</a>
+            <a href="https://github.com/ZodaciOS" class="btn">View Github</a>
+          </div>
+          <div class="spacer" id="projects"></div>
+        </section>
 
-        <div class="cta-row">
-          <a href="" class="btn">Contact Me</a>
-          <a href="https://github.com/ZodaciOS" class="btn">View Github</a>a
+        <div class="section-title">Ongoing Projects</div>
+        <div class="projects-grid">
+          <div class="project-card animate-on-scroll">
+            <div class="project-icon">
+              <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+            </div>
+            <h3 class="project-title">InstanceX</h3>
+            <span class="status-badge in-dev">In-Development</span>
+            <p class="project-desc">A upcoming jailbroken tweak that allows you to run up to 4 instances of an app, including Roblox using libCrane.</p>
+            <a href="https://github.com/ZodaciOS/InstanceX" class="btn project-btn" style="text-decoration:none;"><strong>View</strong></a>
+          </div>
+
+          <div class="project-card animate-on-scroll">
+            <div class="project-icon">
+              <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/></svg>
+            </div>
+            <h3 class="project-title">Alia</h3>
+            <span class="status-badge in-dev">In-Development</span>
+            <p class="project-desc">An upcoming keyless iOS Roblox executor with 100% sUNC, custom Luau functions and more.</p>
+            <a href="https://get-alia.com" class="btn project-btn" style="text-decoration:none;"><strong>View</strong></a>
+          </div>
         </div>
 
-        <div class="spacer" id="projects"></div>
-      </section>
-<div class="section-title">Ongoing Projects</div>
-<div class="projects-grid">
-<div class="project-card animate-on-scroll">
-  <div class="project-icon">
-    <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
-  </div>
-  <h3 class="project-title">InstanceX</h3>
-  <span class="status-badge in-dev">In-Development</span>
-  <p class="project-desc">A upcoming jailbroken tweak that allows you to run up to 4 instances of an app, including Roblox using libCrane.</p>
-  <a href="https://github.com/ZodaciOS/InstanceX" class="btn project-btn" style="text-decoration:none;"><strong>View</strong></a>
-</div>
+        <div class="section-title">Direct Install</div>
+        <div class="projects-grid">
+          <div class="project-card animate-on-scroll">
+            <div class="project-icon">
+              <img src="IMG_9973.png" alt="DNS Icon" style="width:28px; height:28px; border-radius:12px; object-fit:cover;">
+            </div>
+            <h3 class="project-title">Khoindvn DNS Install</h3>
+            <p class="project-desc">Prevent blacklists and revokes by blocking Apple's servers</p>
+            <p class="project-desc"><strong>⚠️ If using Direct Install, it is recommended to use. We do not own or manage this service. Use at your own risk.</strong></p>
+            <a href="https://khoindvn.io.vn/document/DNS/signed_khoindvn.mobileconfig" class="btn project-btn" style="text-decoration:none;">Install</a>
+            <a href="https://khoindvn.io.vn" class="btn project-btn" style="text-decoration:none;"><strong>View Khoindvn</strong></a>
+          </div>
 
-<div class="project-card animate-on-scroll">
-  <div class="project-icon">
-    <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/></svg>
-  </div>
-  <h3 class="project-title">Alia</h3>
-  <span class="status-badge in-dev">In-Development</span>
-  <p class="project-desc">An upcoming keyless iOS Roblox executor with 100% sUNC, custom Luau functions and more.</p>
-  <a href="https://get-alia.com" class="btn project-btn" style="text-decoration:none;"><strong>View</strong></a>
-</div>
+          <div class="project-card animate-on-scroll">
+            <div class="project-icon">
+              <img src="delta.jpeg" alt="Delta Icon" style="width:28px; height:28px; border-radius:12px; object-fit:cover;">
+            </div>
+            <h3 class="project-title">Delta 2.692.841</h3>
+            <p class="project-desc">V2 China Telecommunications Corporation</p>
+            <p class="project-desc"><strong>⚠️ Install DNS before using to avoid revokes and blacklists.</strong></p>
+            <a href="itms-services://?action=download-manifest&url=https://zodacios.github.io/delta.plist" class="btn project-btn" style="text-decoration:none;">Install</a>
+          </div>
 
+          <div class="project-card animate-on-scroll">
+            <div class="project-icon">
+              <img src="delta.jpeg" alt="Delta Icon" style="width:28px; height:28px; border-radius:12px; object-fit:cover;">
+            </div>
+            <h3 class="project-title">Delta 2.692.841</h3>
+            <p class="project-desc">Central Power Information Technology Company</p>
+            <p class="project-desc"><strong>⚠️ Install DNS before using to avoid revokes and blacklists.</strong></p>
+            <a href="itms-services://?action=download-manifest&url=https://zodacios.github.io/delta1.plist" class="btn project-btn" style="text-decoration:none;">Install</a>
+          </div>
+        </div>
+      </div>
 
       <aside class="right-column">
         <div class="card animate-on-scroll">
           <div class="section-title">Programming Languages</div>
-
 
           <div class="skill" data-skill="Objective-C">
             <div class="skill-header">
@@ -625,7 +651,6 @@
             </div>
           </div>
 
-
           <div class="skill" data-skill="Luau">
             <div class="skill-header">
               <span class="skill-name">Luau</span>
@@ -635,7 +660,6 @@
               <div class="progress-fill" style="--percent:5"></div>
             </div>
           </div>
-
 
           <div class="skill" data-skill="Python">
             <div class="skill-header">
@@ -647,7 +671,7 @@
             </div>
           </div>
 
-                    <div class="skill" data-skill="HTML">
+          <div class="skill" data-skill="HTML">
             <div class="skill-header">
               <span class="skill-name">HTML</span>
               <span class="skill-percent" data-target="79">0%</span>
@@ -657,7 +681,7 @@
             </div>
           </div>
 
-                    <div class="skill" data-skill="CSS">
+          <div class="skill" data-skill="CSS">
             <div class="skill-header">
               <span class="skill-name">CSS</span>
               <span class="skill-percent" data-target="65">0%</span>
@@ -668,7 +692,6 @@
           </div>
 
           <div class="spacer"></div>
-
           <div class="section-title">Software / Tools</div>
           <div class="software-grid">
             <div class="sw-badge">Theos</div>
@@ -696,55 +719,18 @@
             <div class="hobby">Sideloading &amp; Private API's</div>
           </div>
         </div>
-
-          <div class="spacer" id="projects"></div>
-      </section>
-<div class="section-title">Direct Install</div>
-<div class="projects-grid">
-<div class="project-card animate-on-scroll">
-
-  <div class="project-icon">
-  <img src="IMG_9973.png" alt="DNS Icon" style="width:28px; height:28px; border-radius:12px; object-fit:cover;">
-</div>
-  <h3 class="project-title">Khoindvn DNS Install</h3>
-  <p class="project-desc">Prevent blacklists and revokes by blocking Apple's servers</p>
-<p class="project-desc"><strong>⚠️ If using Direct Install, it is recommended to use. We do not own or manage this service. Use at your own risk.</strong></p>
-  <a href="https://khoindvn.io.vn/document/DNS/signed_khoindvn.mobileconfig" class="btn project-btn" style="text-decoration:none;">Install</a>
-  <a href="https://khoindvn.io.vn" class="btn project-btn" style="text-decoration:none;"><strong>View Khoindvn</strong></a>
-</div>
-  
-<div class="project-card animate-on-scroll">
-  <div class="project-icon">
-    <img src="delta.jpeg" alt="Delta Icon" style="width:28px; height:28px; border-radius:12px; object-fit:cover;">
-  </div>
-  <h3 class="project-title">Delta 2.692.841</h3>
-  <p class="project-desc">V2 China Telecommunications Corporation</p>
-  <p class="project-desc"><strong>⚠️ Install DNS before using to avoid revokes and blacklists.</strong></p>
-  <a href="itms-services://?action=download-manifest&url=https://zodacios.github.io/delta.plist" class="btn project-btn" style="text-decoration:none;">Install</a>
-</div>
-
-<div class="project-card animate-on-scroll">
-  <div class="project-icon">
-    <img src="delta.jpeg" alt="Delta Icon" style="width:28px; height:28px; border-radius:12px; object-fit:cover;">
-  </div>
-  <h3 class="project-title">Delta 2.692.841</h3>
-  <p class="project-desc">Central Power Information Technology Company</p>
-  <p class="project-desc"><strong>⚠️ Install DNS before using to avoid revokes and blacklists.</strong></p>
-  <a href="itms-services://?action=download-manifest&url=https://zodacios.github.io/delta1.plist" class="btn project-btn" style="text-decoration:none;">Install</a>
-</div>
+        
         <div class="card animate-on-scroll" style="margin-top:18px">
           <div class="section-title">Contacts</div>
           <div class="contacts" role="list">
 
             <button class="contact-btn" aria-label="GitHub profile" role="listitem" onclick="window.open('#','_blank')">
               <span class="btn-inner" aria-hidden="true">
-
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.55v-2.02c-3.2.7-3.88-1.38-3.88-1.38-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.75 1.18 1.75 1.18 1.02 1.75 2.67 1.25 3.32.96.1-.75.4-1.25.72-1.54-2.56-.29-5.26-1.28-5.26-5.72 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18.92-.26 1.9-.39 2.88-.39s1.96.13 2.88.39c2.19-1.5 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.73.8 1.18 1.83 1.18 3.09 0 4.46-2.71 5.42-5.29 5.7.41.35.77 1.03.77 2.08v3.09c0 .3.21.66.79.55C20.71 21.38 24 17.08 24 12 24 5.73 18.27.5 12 .5z"/>
                 </svg>
               </span>
             </button>
-
 
             <button class="contact-btn" aria-label="Discord server" role="listitem" onclick="window.open('#','_blank')">
               <span class="btn-inner" aria-hidden="true">
@@ -754,7 +740,6 @@
               </span>
             </button>
 
-
             <button class="contact-btn" aria-label="Twitter" role="listitem" onclick="window.open('#','_blank')">
               <span class="btn-inner" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -762,7 +747,6 @@
                 </svg>
               </span>
             </button>
-
 
             <button class="contact-btn" aria-label="YouTube" role="listitem" onclick="window.open('#','_blank')">
               <span class="btn-inner" aria-hidden="true">
